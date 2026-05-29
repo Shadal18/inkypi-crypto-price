@@ -1,0 +1,6 @@
+{
+  "display_name": "Crypto Price",
+  "id": "crypto_price",
+  "class": "CryptoPrice",
+  "repository_url": "https://github.com/shadal18/inkypi-crypto-price"
+}

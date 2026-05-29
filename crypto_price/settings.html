@@ -1,0 +1,76 @@
+<div class="form-group">
+  <label for="title" class="form-label">Header Text</label>
+  <input id="title" name="title" type="text" class="form-input" placeholder="Crypto Price" />
+</div>
+
+<div class="form-group">
+  <label for="symbol" class="form-label">Crypto Symbol Pair</label>
+  <input id="symbol" name="symbol" type="text" class="form-input" placeholder="BTCUSD" required />
+  <small>
+    Enter a crypto pair supported by API Ninjas, for example
+    <code>BTCUSD</code> or <code>BTCUSDT</code>.
+  </small>
+</div>
+
+<hr style="border: 0; border-top: 1px solid rgba(0, 0, 0, 0.12); margin: 24px 0 18px" />
+
+<div class="form-group" style="margin-bottom: 20px">
+  <div
+    style="
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #555;
+      margin-bottom: 10px;
+    "
+  >
+    Plugin Repository
+  </div>
+
+  <div style="background: #f8f9fa; border: 1px solid #dcdfe3; border-radius: 10px; padding: 14px 16px">
+    <a
+      href="https://github.com/shadal18/inkypi-crypto-price"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="
+        color: #0d6efd;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        word-break: break-word;
+        display: inline-block;
+        margin-bottom: 6px;
+      "
+    >
+      github.com/shadal18/inkypi-crypto-price
+    </a>
+
+    <div style="font-size: 0.9rem; color: #666">Setup help, updates, release notes, and source code.</div>
+  </div>
+</div>
+
+<script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const titleInput = document.getElementById("title")
+    const symbolInput = document.getElementById("symbol")
+
+    if (typeof loadPluginSettings !== "undefined" && loadPluginSettings) {
+      if (titleInput) titleInput.value = pluginSettings.title || "Crypto Price"
+      if (symbolInput) symbolInput.value = pluginSettings.symbol || "BTCUSD"
+    } else {
+      if (titleInput) titleInput.value = "Crypto Price"
+      if (symbolInput) symbolInput.value = "BTCUSD"
+    }
+
+    if (typeof kofiWidgetOverlay !== "undefined") {
+      kofiWidgetOverlay.draw("shadal", {
+        type: "floating-chat",
+        "floating-chat.donateButton.text": "More coffee",
+        "floating-chat.donateButton.background-color": "#00b9fe",
+        "floating-chat.donateButton.text-color": "#fff",
+      })
+    }
+  })
+</script>
