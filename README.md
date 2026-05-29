@@ -37,7 +37,6 @@ If you don’t see your changes after updating:
 
 ## Requirements
 
-- A working InkyPi installation with plugin support [web:3].
 - An API Ninjas account with a configured API key for crypto price requests.
 - A valid InkyPi environment key named `API_NINJAS_KEY`.
 - Network access from the InkyPi device to the API Ninjas API endpoint.

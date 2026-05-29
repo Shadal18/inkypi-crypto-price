@@ -5,83 +5,339 @@ body {
   height: 100%;
   background: #fff;
   font-family: "Jost", sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 .container {
   width: 100%;
   height: 100%;
-  padding: 24px;
-  box-sizing: border-box;
+  padding: 22px 24px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: stretch;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(247, 192, 74, 0.18), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(0, 185, 254, 0.12), transparent 28%), #ffffff;
 }
 
 .crypto-screen {
   width: 100%;
   height: 100%;
+  min-width: 0;
+  min-height: 0;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-  gap: 18px;
-  color: #000;
+  gap: 16px;
+  color: #111;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 0;
 }
 
 .title {
-  text-align: center;
-  font-size: 30px;
-  font-weight: 800;
+  font-size: 28px;
   line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.03em;
 }
 
-.pair-row {
+.timestamp {
+  text-align: right;
+  font-size: 14px;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #666;
+  max-width: 210px;
+}
+
+.pair-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coin-group {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 84px 1fr 84px;
+  align-items: center;
+  gap: 16px;
+}
+
+.coin-badge {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  border: 3px solid #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 900;
+  color: #111;
+  box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.35);
+}
+
+.coin-badge span {
+  transform: translateY(-1px);
+}
+
+.quote-badge {
+  justify-self: end;
+}
+
+.coin-btc {
+  background: #f7931a;
+  color: #fff;
+  border-color: #c96f00;
+}
+.coin-eth {
+  background: #627eea;
+  color: #fff;
+  border-color: #455fc7;
+}
+.coin-usd {
+  background: #85bb65;
+  color: #fff;
+  border-color: #5b9440;
+}
+.coin-usdt {
+  background: #26a17b;
+  color: #fff;
+  border-color: #1d7f61;
+}
+.coin-usdc {
+  background: #2775ca;
+  color: #fff;
+  border-color: #1c5fa8;
+}
+.coin-eur {
+  background: #2f6fed;
+  color: #fff;
+  border-color: #204fb0;
+}
+.coin-gbp {
+  background: #7c4dff;
+  color: #fff;
+  border-color: #5d37ca;
+}
+.coin-bnb {
+  background: #f3ba2f;
+  color: #111;
+  border-color: #cb9b18;
+}
+.coin-sol {
+  background: linear-gradient(135deg, #00ffa3 0%, #dc1fff 100%);
+  color: #111;
+  border-color: #111;
+}
+.coin-xrp {
+  background: #23292f;
+  color: #fff;
+  border-color: #111;
+}
+.coin-ada {
+  background: #2a6df4;
+  color: #fff;
+  border-color: #1748a7;
+}
+
+.coin-group
+  .coin-badge:not([class*="coin-btc"]):not([class*="coin-eth"]):not([class*="coin-usd"]):not([class*="coin-usdt"]):not(
+    [class*="coin-usdc"]
+  ):not([class*="coin-eur"]):not([class*="coin-gbp"]):not([class*="coin-bnb"]):not([class*="coin-sol"]):not(
+    [class*="coin-xrp"]
+  ):not([class*="coin-ada"]) {
+  background: linear-gradient(135deg, #e9ecef 0%, #cfd4da 100%);
+}
+
+.pair-text {
+  min-width: 0;
+  text-align: center;
+}
+
+.pair-line {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: 10px;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
 .base-symbol,
 .quote-symbol {
-  font-size: 34px;
-  font-weight: 900;
+  font-size: 42px;
   line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.03em;
 }
 
 .slash {
-  font-size: 26px;
+  font-size: 28px;
+  line-height: 1;
   font-weight: 700;
   color: #666;
 }
 
+.pair-subtitle {
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777;
+}
+
 .price-card {
-  border: 3px solid #000;
-  border-radius: 24px;
-  padding: 24px;
+  border-radius: 28px;
+  border: 3px solid #111;
+  background: linear-gradient(135deg, rgba(247, 147, 26, 0.1) 0%, rgba(39, 117, 202, 0.12) 100%), #ffffff;
+  padding: 22px 24px 18px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.price-header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
 }
 
 .price-label {
   font-size: 16px;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: #666;
-  margin-bottom: 14px;
+}
+
+.market-chip {
+  border-radius: 999px;
+  padding: 6px 12px;
+  background: #00b85c;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.08em;
 }
 
 .price-value {
-  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  display: flex;
+  align-items: center;
+  font-size: clamp(3rem, 8vw, 5.8rem);
+  line-height: 0.95;
   font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.05em;
+  color: #111;
   word-break: break-word;
+  min-height: 0;
 }
 
-.timestamp {
-  text-align: right;
-  font-size: 16px;
-  font-weight: 600;
+.price-accent-row {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr 0.6fr;
+  gap: 10px;
+}
+
+.accent-bar {
+  height: 12px;
+  border-radius: 999px;
+}
+
+.accent-left {
+  background: #f7931a;
+}
+
+.accent-mid {
+  background: #2775ca;
+}
+
+.accent-right {
+  background: #00b9fe;
+}
+
+.meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.meta-pill {
+  border-radius: 18px;
+  border: 3px solid #111;
+  background: #fff;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.meta-name {
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: #666;
+  margin-bottom: 8px;
+}
+
+.meta-value {
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #111;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 18px 20px;
+  }
+
+  .coin-group {
+    grid-template-columns: 68px 1fr 68px;
+    gap: 12px;
+  }
+
+  .coin-badge {
+    width: 68px;
+    height: 68px;
+    font-size: 28px;
+  }
+
+  .base-symbol,
+  .quote-symbol {
+    font-size: 34px;
+  }
+
+  .slash {
+    font-size: 24px;
+  }
+
+  .price-value {
+    font-size: clamp(2.5rem, 7vw, 4.8rem);
+  }
+
+  .meta-value {
+    font-size: 20px;
+  }
 }

@@ -2,19 +2,56 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/crypto_price.css') }}" />
 {% endblock %} {% block content %}
 <div class="crypto-screen">
-  <div class="title">{{ title }}</div>
+  <div class="topbar">
+    <div class="title">{{ title }}</div>
+    <div class="timestamp">Updated {{ timestamp }}</div>
+  </div>
 
-  <div class="pair-row">
-    <span class="base-symbol">{{ base_symbol }}</span>
-    <span class="slash">/</span>
-    <span class="quote-symbol">{{ quote_symbol }}</span>
+  <div class="pair-hero">
+    <div class="coin-group">
+      <div class="coin-badge coin-{{ base_symbol|lower }}">
+        <span>{{ base_symbol[:1] }}</span>
+      </div>
+
+      <div class="pair-text">
+        <div class="pair-line">
+          <span class="base-symbol">{{ base_symbol }}</span>
+          <span class="slash">/</span>
+          <span class="quote-symbol">{{ quote_symbol }}</span>
+        </div>
+        <div class="pair-subtitle">{{ symbol }}</div>
+      </div>
+
+      <div class="coin-badge coin-{{ quote_symbol|lower }} quote-badge">
+        <span>{{ quote_symbol[:1] }}</span>
+      </div>
+    </div>
   </div>
 
   <div class="price-card">
-    <div class="price-label">Current Price</div>
+    <div class="price-header">
+      <div class="price-label">Current Price</div>
+      <div class="market-chip">LIVE</div>
+    </div>
+
     <div class="price-value">{{ price }}</div>
+
+    <div class="price-accent-row">
+      <div class="accent-bar accent-left"></div>
+      <div class="accent-bar accent-mid"></div>
+      <div class="accent-bar accent-right"></div>
+    </div>
   </div>
 
-  <div class="timestamp">Updated {{ timestamp }}</div>
+  <div class="meta-row">
+    <div class="meta-pill">
+      <span class="meta-name">Base</span>
+      <span class="meta-value">{{ base_symbol }}</span>
+    </div>
+    <div class="meta-pill">
+      <span class="meta-name">Quote</span>
+      <span class="meta-value">{{ quote_symbol }}</span>
+    </div>
+  </div>
 </div>
 {% endblock %}
