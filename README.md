@@ -7,7 +7,7 @@ An InkyPi plugin that shows a crypto price with a clean, glanceable layout and c
 Use the InkyPi plugin installer with the plugin ID and this repository URL, following the install pattern shown by the official InkyPi plugin template.
 
 ```bash
-inkypi plugin install crypto_price [https://github.com/shadal18/inkypi-crypto-price](https://github.com/shadal18/inkypi-crypto-price)
+inkypi plugin install crypto_price https://github.com/shadal18/inkypi-crypto-price
 ```
 
 ## Update
