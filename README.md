@@ -2,6 +2,8 @@
 
 An InkyPi plugin that shows a crypto price with a clean, glanceable layout and configurable symbol settings.
 
+_Crypto Price_ is a plugin for [InkyPi](https://github.com/fatihak/InkyPi) that tracks live crypto prices and presents them in a clean e‑paper‑friendly layout.
+
 ## Install
 
 Use the InkyPi plugin installer with the plugin ID and this repository URL, following the install pattern shown by the official InkyPi plugin template.
