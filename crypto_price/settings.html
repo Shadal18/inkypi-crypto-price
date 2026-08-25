@@ -1,387 +1,196 @@
 <style>
   :root {
-    --cp-bg: var(--background-color, var(--color-background, #f5f7fb));
-    --cp-bg-soft: var(--card-background-secondary, var(--color-surface-2, #eef2f7));
-    --cp-panel: var(--card-background, var(--color-surface, #ffffff));
-    --cp-panel-2: var(--card-background-hover, var(--color-surface-2, #f8fafc));
-    --cp-border: var(--border-color, rgba(15, 23, 42, 0.12));
-    --cp-text: var(--text-primary, var(--color-text, #0f172a));
-    --cp-text-muted: var(--text-secondary, var(--color-text-secondary, #475569));
-    --cp-text-soft: var(--text-muted, #64748b);
-    --cp-primary: var(--accent-color, #14b8a6);
-    --cp-info: var(--info-color, #3b82f6);
-    --cp-shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.08);
-    --cp-radius-xl: 18px;
-    --cp-radius-lg: 14px;
+    --ink-bg: var(--background-color, var(--color-background, #f5f7fb));
+    --ink-bg-soft: var(--card-background-secondary, var(--color-surface-2, #eef2f7));
+    --ink-panel: var(--card-background, var(--color-surface, #ffffff));
+    --ink-panel-2: var(--card-background-hover, var(--color-surface-2, #f8fafc));
+    --ink-border: var(--border-color, rgba(15, 23, 42, 0.12));
+    --ink-text: var(--text-primary, var(--color-text, #0f172a));
+    --ink-text-muted: var(--text-secondary, var(--color-text-secondary, #475569));
+    --ink-text-soft: var(--text-muted, #64748b);
+    --ink-primary: var(--accent-color, #14b8a6);
+    --ink-info: var(--info-color, #3b82f6);
+    --ink-shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --ink-radius-xl: 18px;
   }
 
   html.dark,
   body.dark,
   [data-theme="dark"],
   html[data-theme="dark"] {
-    --cp-bg: var(--background-color, var(--color-background, #0f172a));
-    --cp-bg-soft: var(--card-background-secondary, var(--color-surface-2, #162033));
-    --cp-panel: var(--card-background, var(--color-surface, #111827));
-    --cp-panel-2: var(--card-background-hover, var(--color-surface-2, #172033));
-    --cp-border: var(--border-color, rgba(255, 255, 255, 0.1));
-    --cp-text: var(--text-primary, var(--color-text, #f8fafc));
-    --cp-text-muted: var(--text-secondary, var(--color-text-secondary, #cbd5e1));
-    --cp-text-soft: var(--text-muted, #94a3b8);
-    --cp-shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.22);
+    --ink-bg: var(--background-color, var(--color-background, #0f172a));
+    --ink-bg-soft: var(--card-background-secondary, var(--color-surface-2, #162033));
+    --ink-panel: var(--card-background, var(--color-surface, #111827));
+    --ink-panel-2: var(--card-background-hover, var(--color-surface-2, #172033));
+    --ink-border: var(--border-color, rgba(255, 255, 255, 0.1));
+    --ink-text: var(--text-primary, var(--color-text, #f8fafc));
+    --ink-text-muted: var(--text-secondary, var(--color-text-secondary, #cbd5e1));
+    --ink-text-soft: var(--text-muted, #94a3b8);
+    --ink-shadow-sm: 0 10px 28px rgba(0, 0, 0, 0.22);
   }
 
-  .crypto-settings-container {
-    width: 100%;
-    box-sizing: border-box;
-    color: var(--cp-text);
+  .crypto-settings-container { width: 100%; box-sizing: border-box; color: var(--ink-text); }
+  .ink-shell { display: grid; gap: 18px; margin-top: 8px; }
+
+  .ink-hero, .ink-section, .ink-hint-card, .ink-link-card {
+    overflow: hidden; border: 1px solid var(--ink-border); border-radius: var(--ink-radius-xl);
+    background: linear-gradient(180deg, var(--ink-panel), var(--ink-panel-2)); box-shadow: var(--ink-shadow-sm);
   }
 
-  .cp-shell {
-    display: grid;
-    gap: 18px;
-    margin-top: 8px;
-  }
-
-  .cp-hero {
-    position: relative;
-    overflow: hidden;
-    border-radius: var(--cp-radius-xl);
-    border: 1px solid var(--cp-border);
+  .ink-hero {
+    position: relative; padding: 22px;
     background:
-      radial-gradient(circle at top right, color-mix(in srgb, var(--cp-primary) 16%, transparent), transparent 34%),
-      radial-gradient(circle at bottom left, color-mix(in srgb, var(--cp-info) 12%, transparent), transparent 30%),
-      linear-gradient(180deg, color-mix(in srgb, var(--cp-panel) 92%, var(--cp-bg-soft) 8%), var(--cp-panel-2));
-    box-shadow: var(--cp-shadow-sm);
-    padding: 22px 22px 18px;
+      radial-gradient(circle at top right, color-mix(in srgb, var(--ink-primary) 16%, transparent), transparent 34%),
+      radial-gradient(circle at bottom left, color-mix(in srgb, var(--ink-info) 12%, transparent), transparent 30%),
+      linear-gradient(180deg, color-mix(in srgb, var(--ink-panel) 92%, var(--ink-bg-soft) 8%), var(--ink-panel-2));
   }
 
-  .cp-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--cp-primary) 14%, transparent);
-    color: var(--cp-primary);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    border: 1px solid color-mix(in srgb, var(--cp-primary) 22%, transparent);
+  .ink-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; margin-bottom: 10px;
+    border: 1px solid color-mix(in srgb, var(--ink-primary) 22%, transparent); border-radius: 999px;
+    background: color-mix(in srgb, var(--ink-primary) 14%, transparent); color: var(--ink-primary);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
   }
 
-  .cp-hero h2 {
-    margin: 0;
-    color: var(--cp-text);
-    font-size: 28px;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
+  .ink-hero h2 { margin: 0; color: var(--ink-text); font-size: 28px; line-height: 1.08; letter-spacing: -0.03em; }
+  .ink-hero p { max-width: 68ch; margin: 10px 0 0; color: var(--ink-text-muted); font-size: 14px; line-height: 1.6; }
+
+  .ink-hint-card, .ink-link-card { padding: 16px 20px; }
+  .ink-hint-heading { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+
+  .ink-hint-icon, .ink-section-icon, .ink-link-icon {
+    display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center;
+    border: 1px solid var(--ink-border); border-radius: 12px;
+    background: color-mix(in srgb, var(--ink-bg-soft) 65%, var(--ink-panel) 35%); font-size: 18px;
   }
 
-  .cp-hero p {
-    margin: 10px 0 0;
-    max-width: 68ch;
-    color: var(--cp-text-muted);
-    font-size: 14px;
-    line-height: 1.6;
+  .ink-hint-icon {
+    width: 30px; height: 30px; border-color: color-mix(in srgb, var(--ink-primary) 28%, transparent);
+    border-radius: 9px; background: color-mix(in srgb, var(--ink-primary) 14%, transparent); font-size: 16px;
   }
 
-  .cp-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-    margin-top: 18px;
-  }
+  .ink-hint-title { margin: 0; color: var(--ink-text); font-size: 14px; font-weight: 700; }
+  .ink-hint-copy, .ink-link-help { margin: 0; color: var(--ink-text-muted); font-size: 12px; line-height: 1.6; }
+  .ink-hint-copy code, .ink-note code { padding: 2px 5px; border-radius: 5px; background: color-mix(in srgb, var(--ink-primary) 12%, transparent); color: var(--ink-text); font-family: monospace; }
 
-  .cp-metric {
-    border: 1px solid var(--cp-border);
-    border-radius: var(--cp-radius-lg);
-    background: color-mix(in srgb, var(--cp-panel) 92%, var(--cp-bg) 8%);
-    padding: 14px 14px 12px;
-    min-width: 0;
-    box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 22%, transparent);
-  }
+  .ink-section-header { display: flex; align-items: center; gap: 14px; padding: 18px 20px; border-bottom: 1px solid var(--ink-border); }
+  .ink-section-icon { width: 38px; height: 38px; }
+  .ink-section-copy { flex: 1; min-width: 0; }
+  .ink-section-title { margin: 0; color: var(--ink-text); font-size: 18px; font-weight: 700; line-height: 1.2; }
+  .ink-section-subtitle { margin-top: 4px; color: var(--ink-text-muted); font-size: 13px; }
+  .ink-section-body { padding: 18px 20px 20px; }
 
-  .cp-metric-label {
-    color: var(--cp-text-soft);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
-  }
+  .ink-grid { display: grid; gap: 16px; }
+  .ink-field { display: grid; min-width: 0; gap: 8px; }
+  .ink-label { color: var(--ink-text-soft); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
 
-  .cp-metric-value {
-    color: var(--cp-text);
-    font-size: 28px;
-    line-height: 1;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-  }
-
-  .cp-metric-sub {
-    color: var(--cp-text-muted);
-    font-size: 12px;
-    margin-top: 6px;
-  }
-
-  .cp-section,
-  .cp-link-card {
-    border: 1px solid var(--cp-border);
-    border-radius: var(--cp-radius-xl);
-    background: linear-gradient(180deg, var(--cp-panel), var(--cp-panel-2));
-    box-shadow: var(--cp-shadow-sm);
-    overflow: hidden;
-  }
-
-  .cp-section-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 18px 20px;
-    border-bottom: 1px solid var(--cp-border);
-  }
-
-  .cp-section-icon {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-    border: 1px solid var(--cp-border);
-    background: color-mix(in srgb, var(--cp-bg-soft) 65%, var(--cp-panel) 35%);
-  }
-
-  .cp-section-copy {
-    flex: 1;
-    min-width: 0;
-  }
-
-  .cp-section-title {
-    color: var(--cp-text);
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: 0;
-  }
-
-  .cp-section-subtitle {
-    color: var(--cp-text-muted);
-    font-size: 13px;
-    margin-top: 4px;
-  }
-
-  .cp-section-body {
-    padding: 18px 20px 20px;
-  }
-
-  .cp-grid {
-    display: grid;
-    gap: 16px;
-  }
-
-  .cp-field {
-    display: grid;
-    gap: 8px;
-    min-width: 0;
-  }
-
-  .cp-label {
-    color: var(--cp-text-soft);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-
-  .cp-input,
-  .crypto-settings-container input[type="text"] {
-    width: 100%;
-    min-height: 46px;
-    padding: 0 14px;
-    border-radius: 12px;
-    border: 1px solid var(--cp-border);
-    background: var(--cp-panel);
-    color: var(--cp-text);
-    outline: none;
-    box-sizing: border-box;
+  .ink-input, .crypto-settings-container input[type="text"] {
+    box-sizing: border-box; width: 100%; min-height: 46px; padding: 0 14px; border: 1px solid var(--ink-border);
+    border-radius: 12px; outline: none; background: var(--ink-panel); color: var(--ink-text);
     box-shadow: inset 0 1px 0 color-mix(in srgb, #fff 14%, transparent);
   }
 
-  .cp-input::placeholder,
-  .crypto-settings-container input::placeholder {
-    color: var(--cp-text-soft);
-    opacity: 1;
+  .ink-input::placeholder, .crypto-settings-container input::placeholder { color: var(--ink-text-soft); opacity: 1; }
+  .ink-input:focus, .crypto-settings-container input:focus {
+    border-color: color-mix(in srgb, var(--ink-primary) 45%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--ink-primary) 14%, transparent);
   }
 
-  .cp-input:focus,
-  .crypto-settings-container input:focus {
-    border-color: color-mix(in srgb, var(--cp-primary) 45%, transparent);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--cp-primary) 14%, transparent);
-  }
+  .ink-note { margin: 0; color: var(--ink-text-muted); font-size: 12px; line-height: 1.6; }
 
-  .cp-note {
-    margin: 0;
-    color: var(--cp-text-muted);
-    font-size: 12px;
-    line-height: 1.6;
-  }
+  .ink-link-card { display: flex; align-items: center; gap: 12px; }
+  .ink-link-icon { width: 38px; height: 38px; background: color-mix(in srgb, var(--ink-info) 13%, var(--ink-panel)); }
+  .ink-link-copy { min-width: 0; }
+  .ink-link-card a { display: inline-block; color: var(--ink-primary); font-weight: 700; text-decoration: none; word-break: break-word; }
+  .ink-link-card a:hover, .ink-link-card a:focus-visible { outline: none; text-decoration: underline; }
 
-  .cp-note code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 0.95em;
-  }
-
-  .cp-link-card {
-    padding: 16px 20px;
-  }
-
-  .cp-link-card a {
-    color: var(--cp-primary);
-    text-decoration: none;
-    font-weight: 700;
-    word-break: break-word;
-  }
-
-  .cp-link-card a:hover,
-  .cp-link-card a:focus-visible {
-    text-decoration: underline;
-    outline: none;
-  }
-
-  .cp-link-help {
-    margin-top: 8px;
-    color: var(--cp-text-muted);
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  .floatingchat-container-wrap,
-  .floating-chat-kofi-popup-iframe {
-    left: unset !important;
-    right: 16px !important;
-  }
-
-  .floatingchat-container-wrap {
-    bottom: 14px !important;
-  }
-
-  .floating-chat-kofi-popup-iframe {
-    bottom: 76px !important;
-  }
-
-  @media (max-width: 920px) {
-    .cp-metrics {
-      grid-template-columns: 1fr;
-    }
-  }
+  .floatingchat-container-wrap, .floatingchat-container-wrap-mobi { right: 16px !important; bottom: 14px !important; left: unset !important; }
+  .floating-chat-kofi-popup-iframe { right: 16px !important; bottom: 76px !important; left: unset !important; }
 
   @media (max-width: 760px) {
-    .cp-hero {
-      padding: 18px;
-    }
-
-    .cp-hero h2 {
-      font-size: 22px;
-    }
-
-    .cp-section-header {
-      padding: 16px;
-    }
-
-    .cp-section-body,
-    .cp-link-card {
-      padding: 16px;
-    }
+    .ink-hero { padding: 18px; }
+    .ink-hero h2 { font-size: 22px; }
+    .ink-section-header, .ink-section-body, .ink-hint-card, .ink-link-card { padding: 16px; }
+    .ink-link-card { align-items: flex-start; }
   }
 </style>
 
 <div class="crypto-settings-container">
-  <div class="cp-shell">
-    <section class="cp-hero">
-      <div class="cp-eyebrow">Crypto Price</div>
+  <div class="ink-shell">
+    <section class="ink-hero">
+      <div class="ink-eyebrow">₿ Crypto price</div>
       <h2>Display a cryptocurrency price for a selected trading pair.</h2>
       <p>
-        Customize the header text, choose the symbol pair used for price lookup, and keep the plugin repository link
-        nearby for setup help, updates, release notes, and source code.
+        Choose the symbol pair to query and set a custom heading for your display. The plugin retrieves the latest
+        quoted price when your InkyPi display job runs.
       </p>
-
-      <div class="cp-metrics">
-        <div class="cp-metric">
-          <div class="cp-metric-label">Source</div>
-          <div class="cp-metric-value">API</div>
-          <div class="cp-metric-sub">API Ninjas crypto price endpoint</div>
-        </div>
-        <div class="cp-metric">
-          <div class="cp-metric-label">Format</div>
-          <div class="cp-metric-value">Pair</div>
-          <div class="cp-metric-sub">Concatenated crypto symbol input</div>
-        </div>
-        <div class="cp-metric">
-          <div class="cp-metric-label">Default</div>
-          <div class="cp-metric-value">BTCUSD</div>
-          <div class="cp-metric-sub">Starter pair for Bitcoin pricing</div>
-        </div>
-      </div>
     </section>
 
-    <section class="cp-section">
-      <div class="cp-section-header">
-        <span class="cp-section-icon" aria-hidden="true">₿</span>
-        <div class="cp-section-copy">
-          <div class="cp-section-title">Display settings</div>
-          <div class="cp-section-subtitle">Set the header text and the trading pair used for the price request.</div>
+    <section class="ink-hint-card">
+      <div class="ink-hint-heading">
+        <span class="ink-hint-icon" aria-hidden="true">📈</span>
+        <h3 class="ink-hint-title">Choose a supported pair</h3>
+      </div>
+      <p class="ink-hint-copy">
+        Enter an API Ninjas-compatible concatenated pair such as <code>BTCUSD</code> or <code>BTCUSDT</code>. Do not
+        include a slash, dash, or space between the base and quote symbols.
+      </p>
+    </section>
+
+    <section class="ink-section">
+      <div class="ink-section-header">
+        <span class="ink-section-icon" aria-hidden="true">₿</span>
+        <div class="ink-section-copy">
+          <h3 class="ink-section-title">Display settings</h3>
+          <div class="ink-section-subtitle">Set the header text and trading pair used for the price request.</div>
         </div>
       </div>
-      <div class="cp-section-body">
-        <div class="cp-grid">
-          <div class="cp-field">
-            <label for="title" class="cp-label">Header text</label>
-            <input id="title" name="title" type="text" class="cp-input" placeholder="Crypto Price" />
-            <p class="cp-note">This text appears as the main heading on the display.</p>
+      <div class="ink-section-body">
+        <div class="ink-grid">
+          <div class="ink-field">
+            <label for="symbol" class="ink-label">Crypto symbol pair</label>
+            <input id="symbol" name="symbol" type="text" class="ink-input" placeholder="BTCUSD" maxlength="20" autocomplete="off" required />
+            <p class="ink-note">For example, <code>BTCUSD</code> or <code>BTCUSDT</code>.</p>
           </div>
-
-          <div class="cp-field">
-            <label for="symbol" class="cp-label">Crypto symbol pair</label>
-            <input id="symbol" name="symbol" type="text" class="cp-input" placeholder="BTCUSD" required />
-            <p class="cp-note">
-              Enter a crypto pair supported by API Ninjas, for example <code>BTCUSD</code> or <code>BTCUSDT</code>.
-            </p>
+          <div class="ink-field">
+            <label for="title" class="ink-label">Header text</label>
+            <input id="title" name="title" type="text" class="ink-input" placeholder="Crypto Price" maxlength="40" />
+            <p class="ink-note">Optional. Leave blank to use the default <code>Crypto Price</code> heading.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="cp-link-card">
-      <a href="https://github.com/shadal18/inkypi-crypto-price" target="_blank" rel="noopener noreferrer">
-        github.com/shadal18/inkypi-crypto-price
-      </a>
-      <div class="cp-link-help">Setup help, updates, release notes, and source code.</div>
+    <section class="ink-link-card">
+      <span class="ink-link-icon" aria-hidden="true">⌘</span>
+      <div class="ink-link-copy">
+        <a href="https://github.com/shadal18/inkypi-crypto-price" target="_blank" rel="noopener noreferrer">github.com/shadal18/inkypi-crypto-price</a>
+        <div class="ink-link-help">Setup help, updates, release notes, and source code.</div>
+      </div>
     </section>
   </div>
 </div>
 
 <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", function () {
+    const defaults = { title: "Crypto Price", symbol: "BTCUSD" }
+    const values =
+      typeof loadPluginSettings !== "undefined" && loadPluginSettings && typeof pluginSettings !== "undefined"
+        ? Object.assign({}, defaults, pluginSettings)
+        : defaults
+
     const titleInput = document.getElementById("title")
     const symbolInput = document.getElementById("symbol")
-
-    if (typeof loadPluginSettings !== "undefined" && loadPluginSettings) {
-      if (titleInput) titleInput.value = pluginSettings.title || "Crypto Price"
-      if (symbolInput) symbolInput.value = pluginSettings.symbol || "BTCUSD"
-    } else {
-      if (titleInput) titleInput.value = "Crypto Price"
-      if (symbolInput) symbolInput.value = "BTCUSD"
-    }
+    if (titleInput) titleInput.value = values.title != null ? values.title : defaults.title
+    if (symbolInput) symbolInput.value = values.symbol != null ? values.symbol : defaults.symbol
 
     if (typeof kofiWidgetOverlay !== "undefined") {
+      const messages = ["I ♥ Coffee", "Tip Jar", "Fuel the Pixels", "Buy Me a Coffee", "Keep InkyPi Brewing"]
+      const message = messages[Math.floor(Math.random() * messages.length)]
       kofiWidgetOverlay.draw("shadal", {
         type: "floating-chat",
-        "floating-chat.donateButton.text": "Yum! Coffee",
+        "floating-chat.donateButton.text": message,
         "floating-chat.donateButton.background-color": "#00b9fe",
         "floating-chat.donateButton.text-color": "#fff",
       })
